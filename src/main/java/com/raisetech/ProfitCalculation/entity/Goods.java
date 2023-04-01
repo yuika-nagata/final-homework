@@ -1,8 +1,12 @@
 package com.raisetech.ProfitCalculation.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-@Data
+@RequiredArgsConstructor
+@Getter
 public class Goods {
     private final int id;
     private final String name;

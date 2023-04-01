@@ -12,13 +12,13 @@ import java.util.Optional;
 
 @Mapper
 public interface ProfitCalculationMapper {
-    @Select("SELECT id,name,costPrice,shippingMethod,sellingPrice ,sellingPrice*0.9-(costPrice+shippingMethod) AS profitRate FROM goods")
+    @Select("SELECT id, name, costPrice, shippingMethod, sellingPrice, sellingPrice*0.9-(costPrice+shippingMethod) AS profitRate FROM goods")
     List<Goods> findAll();
 
-    @Select("SELECT id,name,costPrice,shippingMethod,sellingPrice,sellingPrice*0.9-(costPrice+shippingMethod) AS profitRate FROM goods WHERE id = #{id}")
+    @Select("SELECT id, name, costPrice, shippingMethod, sellingPrice, sellingPrice*0.9-(costPrice+shippingMethod) AS profitRate FROM goods WHERE id = #{id}")
     Optional<Goods> findById(int id);
 
-    @Insert("INSERT INTO goods(name,costPrice,shippingMethod,sellingPrice) VALUES (#{name},#{costPrice},#{shippingMethod},#{sellingPrice})")
+    @Insert("INSERT INTO goods(name, costPrice, shippingMethod, sellingPrice) VALUES (#{name},#{costPrice},#{shippingMethod},#{sellingPrice})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void createGoods(CreateForm form);
 /*

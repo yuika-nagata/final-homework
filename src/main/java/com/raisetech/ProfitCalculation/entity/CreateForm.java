@@ -4,12 +4,13 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
-@Data
+@RequiredArgsConstructor
+@Getter
 public class CreateForm {
-
-    private final int id;
 
     @NotBlank
     @Length(max = 20)
