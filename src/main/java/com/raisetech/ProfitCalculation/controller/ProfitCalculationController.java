@@ -21,21 +21,21 @@ public class ProfitCalculationController {
         this.profitCalculationService = profitCalculationService;
     }
 
-    @GetMapping("/names")
+    @GetMapping("/products")
     public List<Goods> getNames() {
         return profitCalculationService.findAll();
     }
 
-    @GetMapping("/names/{id}")
+    @GetMapping("/products/{id}")
     public Goods getUser(@PathVariable("id") int id) throws Exception {
         return profitCalculationService.findById(id);
     }
 
-    @PostMapping("/names")
+    @PostMapping("/products")
     public ResponseEntity<Map<String, String>> createGoods(@RequestBody @Validated CreateForm form, UriComponentsBuilder uriBuilder) {
         profitCalculationService.createGoods(form);
         URI url = uriBuilder
-                .path("names/" + form.getId())
+                .path("products/" + form.getId())
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "登録が完了しました。"));
