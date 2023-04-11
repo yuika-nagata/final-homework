@@ -3,6 +3,7 @@ package com.raisetech.ProfitCalculation.controller;
 import com.raisetech.ProfitCalculation.entity.CreateForm;
 import com.raisetech.ProfitCalculation.entity.Goods;
 import com.raisetech.ProfitCalculation.service.ProfitCalculationService;
+import org.springframework.boot.context.properties.bind.Name;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
+
+import static com.raisetech.ProfitCalculation.entity.Goods.*;
 
 @RestController
 public class ProfitCalculationController {
@@ -33,9 +36,10 @@ public class ProfitCalculationController {
 
     @PostMapping("/products")
     public ResponseEntity<Map<String, String>> createGoods(@RequestBody @Validated CreateForm form, UriComponentsBuilder uriBuilder) {
-        profitCalculationService.createGoods(form);
+        Goods goods = form.convertToGoodsEntity();
+        profitCalculationService.createGoods(goods);
         URI url = uriBuilder
-                .path("products/" + form.getId())
+                .path("products/" + goods.getId())
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "登録が完了しました。"));

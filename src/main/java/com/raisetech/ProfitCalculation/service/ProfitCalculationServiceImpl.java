@@ -30,8 +30,9 @@ public class ProfitCalculationServiceImpl implements ProfitCalculationService {
     }
 
     @Override
-    public void createGoods(CreateForm form) {
-        profitCalculationMapper.createGoods(form);
+    public void createGoods(Goods goods) {
+        profitCalculationMapper.createGoods(goods);
+
     }
 /*
     @Override

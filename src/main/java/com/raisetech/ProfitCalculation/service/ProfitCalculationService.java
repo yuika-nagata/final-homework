@@ -10,7 +10,7 @@ public interface ProfitCalculationService {
 
     Goods findById(int id);
 
-    void createGoods(CreateForm form);
+    void createGoods(Goods goods);
 /*
     void updateUser(int id, CreateForm name);
 

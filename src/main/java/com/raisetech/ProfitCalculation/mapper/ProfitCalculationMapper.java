@@ -20,7 +20,7 @@ public interface ProfitCalculationMapper {
 
     @Insert("INSERT INTO goods(name, costPrice, shippingMethod, sellingPrice) VALUES (#{name},#{costPrice},#{shippingMethod},#{sellingPrice})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void createGoods(CreateForm form);
+    void createGoods(Goods goods);
 /*
     @Update("UPDATE names SET name = #{name} WHERE id = #{id}")
     void update(CreateForm name);
